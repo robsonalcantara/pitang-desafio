@@ -19,16 +19,6 @@ import {
   DomHandler
 } from "./chunk-IXSVWMKH.js";
 import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-VMLRF32C.js";
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger
-} from "./chunk-SQR3JW5U.js";
-import {
   ObjectUtils,
   OverlayService,
   PrimeNGConfig,
@@ -38,6 +28,16 @@ import {
   UniqueComponentId,
   zindexutils
 } from "./chunk-ZYJA63EB.js";
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger
+} from "./chunk-SQR3JW5U.js";
+import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-VMLRF32C.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -5523,4 +5523,4 @@ export {
   Calendar,
   CalendarModule
 };
-//# sourceMappingURL=chunk-BYDM35ZU.js.map
+//# sourceMappingURL=chunk-RLENEPDC.js.map

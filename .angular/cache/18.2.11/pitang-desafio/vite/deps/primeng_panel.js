@@ -9,18 +9,18 @@ import {
   BaseIcon
 } from "./chunk-IXSVWMKH.js";
 import {
+  Footer,
+  PrimeTemplate,
+  SharedModule,
+  UniqueComponentId
+} from "./chunk-ZYJA63EB.js";
+import {
   animate,
   state,
   style,
   transition,
   trigger
 } from "./chunk-SQR3JW5U.js";
-import {
-  Footer,
-  PrimeTemplate,
-  SharedModule,
-  UniqueComponentId
-} from "./chunk-ZYJA63EB.js";
 import {
   CommonModule,
   NgClass,
