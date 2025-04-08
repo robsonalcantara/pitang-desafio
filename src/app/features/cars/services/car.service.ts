@@ -11,8 +11,7 @@ import {Car} from '../../../models/car.model';
 })
 export class CarService {
 
-  private apiUrl = `${environment.apiUrl}/cars`;
-
+  private readonly apiUrl = `${environment.apiUrl}/api/cars`;
   constructor(private http: HttpClient) { }
 
   createCar(car: Car): Observable<SignInResponse> {
@@ -21,13 +20,12 @@ export class CarService {
   }
 
   getCars(): Observable<Car[]> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.get<Car[]>(this.apiUrl, {headers}).pipe();
+    return this.http.get<Car[]>(this.apiUrl).pipe();
   }
 
   getCarById(car: Car): Observable<Car> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.get<Car>(`${this.apiUrl}/${car.id}`, { headers }).pipe();
+  
+    return this.http.get<Car>(`${this.apiUrl}/${car.id}`).pipe();
   }
 
   editCarById(car: Car): Observable<User> {

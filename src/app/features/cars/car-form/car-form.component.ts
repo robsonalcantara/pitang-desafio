@@ -6,7 +6,6 @@ import {FlexLayoutModule} from '@ngbracket/ngx-layout';
 import {SharedModule} from '../../../shared/shared.module';
 import {Car} from '../../../models/car.model';
 import {CarService} from '../services/car.service';
-import { InputMaskModule } from 'primeng/inputmask';
 import {MessageService} from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 
@@ -20,7 +19,6 @@ import {ToastModule} from 'primeng/toast';
     InputTextModule,
     FloatLabelModule,
     FlexLayoutModule,
-    InputMaskModule,
     ToastModule,
   ],
   providers: [
@@ -40,30 +38,14 @@ export class CarFormComponent {
   constructor(private fb: FormBuilder,
               private carService: CarService,
               private messageService: MessageService) {
-      this.carForm = this.fb.group({
-        id: ['', Validators.required],
-        year: ['', Validators.required],
-        licensePlate: [
-          '',
-          [
-            Validators.required,
-            Validators.maxLength(8),
-            Validators.pattern(/^[A-Z]{3}-\d{4}$|^[A-Z]{3}\d[A-Z]\d{2}$/)
-          ]
-        ],
-        model: ['', Validators.required],
-        color: ['', Validators.required],
-        usage: [''],
-        usageCount: ['']
-      });
+    this.carForm = this.fb.group({
+      id: ['', Validators.required],
+      year: ['', Validators.required],
+      licensePlate: ['', Validators.required],
+      model: ['', Validators.required],
+      color: ['', Validators.required]
 
-      this.carForm.get('licensePlate')?.valueChanges.subscribe(value => {
-        if (value) {
-          this.carForm
-            .get('licensePlate')
-            ?.setValue(value.toUpperCase(), { emitEvent: false });
-        }
-      });
+    });
   }
 
   @Input()
@@ -83,8 +65,6 @@ export class CarFormComponent {
       licensePlate: car.licensePlate,
       model: car.model,
       color: car.color,
-      usage: car.usage,
-      usageCount: car.usageCount
     })
   }
 
@@ -107,21 +87,7 @@ export class CarFormComponent {
         this.updateCarList.emit()
       },
       error: (error) => {
-        let severity = 'error';
-        const status = error.status;
-        const errorCode = error.error?.errorCode || 'Erro';
-        const message = error.error?.message || 'Erro inesperado';
-
-        // Erros tratáveis pelo usuário
-        if (status === 400 || status === 422) {
-          severity = 'warn';
-        }
-
-        this.messageService.add({
-          severity,
-          summary: errorCode,
-          detail: message
-        });
+        this.messageService.add({severity: 'error', summary: error.error.status, detail: error.error.message})
       }
     })
   }
@@ -133,21 +99,7 @@ export class CarFormComponent {
         this.updateCarList.emit();
       },
       error: (error) => {
-        let severity = 'error';
-        const status = error.status;
-        const errorCode = error.error?.errorCode || 'Erro';
-        const message = error.error?.message || 'Erro inesperado';
-
-        // Erros tratáveis pelo usuário
-        if (status === 400 || status === 422) {
-          severity = 'warn';
-        }
-
-        this.messageService.add({
-          severity,
-          summary: errorCode,
-          detail: message
-        });
+        this.messageService.add({severity: 'error', summary: error.error.status, detail: error.error.message})
       }
     })
   }

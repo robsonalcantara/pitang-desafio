@@ -1,7 +1,7 @@
 <app-car-form [editCar]="editCar" (updateCarList)="getCars()"></app-car-form>
 
 <div class="adjust-table-width">
-  <p-table [columns]="cols" [value]="cars" [paginator]="true" [rowsPerPageOptions]="[5, 10, 20]" [rows]="10">
+  <p-table [columns]="cols" [value]="cars" [paginator]="true" [rowsPerPageOptions]="[5, 10, 20]" [rows]="5">
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th *ngFor="let col of columns">
@@ -16,12 +16,10 @@
         <td>{{ car.licensePlate }}</td>
         <td>{{ car.model }}</td>
         <td>{{ car.color }}</td>
-         <!-- Checkbox para indicar se está em uso -->
          <td>
           <p-checkbox [binary]="true" [(ngModel)]="car.usage" (onChange)="carUsage(car)"></p-checkbox>
         </td>
 
-        <!-- Contador de quantas vezes o carro foi utilizado -->
         <td>{{ car.usageCount || 0 }}</td>
 
         <td>
