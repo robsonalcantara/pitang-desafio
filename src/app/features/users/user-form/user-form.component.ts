@@ -11,6 +11,7 @@ import {User} from '../../../models/user.model';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 
+
 @Component({
   selector: 'app-user-form',
   standalone: true,
@@ -21,6 +22,7 @@ import {MessageService} from 'primeng/api';
     InputTextModule,
     FloatLabelModule,
     FlexLayoutModule,
+    InputMaskModule,
     ToastModule
   ],
   providers: [

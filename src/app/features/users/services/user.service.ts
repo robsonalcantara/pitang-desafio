@@ -10,33 +10,30 @@ import {User} from '../../../models/user.model';
   providedIn: 'root'
 })
 export class UserService {
+  private readonly apiUrl = `${environment.apiUrl}/api/users`;
 
-  private apiUrl = `${environment.apiUrl}/users`;
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   createUser(usuario: User): Observable<SignInResponse> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post<SignInResponse>(this.apiUrl, usuario, {headers}).pipe();
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<SignInResponse>(this.apiUrl, usuario, { headers });
   }
 
   getUserById(user: User): Observable<User> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.get<User>(`${this.apiUrl}/${user.id}`, { headers }).pipe();
+    return this.http.get<User>(`${this.apiUrl}/${user.id}`);
   }
 
   getUsers(): Observable<User[]> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.get<User[]>(this.apiUrl, {headers}).pipe();
+    return this.http.get<User[]>(this.apiUrl);
   }
 
   editUserById(usuario: User): Observable<User> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.put<User>(`${this.apiUrl}/${usuario.id}`, usuario, { headers }).pipe();
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<User>(`${this.apiUrl}/${usuario.id}`, usuario, { headers });
   }
 
-  deleteUserById(usuario: User){
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.delete<User>(`${this.apiUrl}/${usuario.id}`, { headers }).pipe();
+  deleteUserById(usuario: User) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.delete<User>(`${this.apiUrl}/${usuario.id}`, { headers });
   }
 }

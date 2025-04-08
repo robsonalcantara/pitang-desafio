@@ -9,7 +9,7 @@ import {User} from '../../../models/user.model';
 })
 export class MeService {
 
-  private apiUrl = `${environment.apiUrl}/me`;
+  private readonly apiUrl = `${environment.apiUrl}/api/me`;
 
   constructor(private http: HttpClient) { }
 

@@ -6,7 +6,15 @@
         <label for="year">Year</label>
       </p-floatLabel>
       <p-floatLabel fxFlex>
-        <input fxFlex id="licensePlate" type="text" pInputText formControlName="licensePlate" />
+        <input
+          fxFlex
+          id="licensePlate"
+          type="text"
+          pInputText
+          maxlength="8"
+          formControlName="licensePlate"
+          placeholder="ABC-1234 ou ABC1D23"
+        />
         <label for="licensePlate">License Plate</label>
       </p-floatLabel>
       <p-floatLabel fxFlex>

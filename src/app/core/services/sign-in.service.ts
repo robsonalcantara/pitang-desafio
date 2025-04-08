@@ -10,13 +10,12 @@ import {SignInResponse} from '../../models/sign-in-response.model';
 })
 export class SignInService {
 
-  private apiUrl = `${environment.apiUrl}/signin`;
-
+  private readonly prod = '/api/signin';
   constructor(private http: HttpClient) { }
 
   signIn(login: LoginRequest): Observable<SignInResponse> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post<SignInResponse>(this.apiUrl, login, {headers}).pipe(
+    return this.http.post<SignInResponse>(this.prod, login, {headers}).pipe(
       tap((value) => {
         sessionStorage.setItem("auth-token", value.token)
         sessionStorage.setItem("username", value.user.firstName)

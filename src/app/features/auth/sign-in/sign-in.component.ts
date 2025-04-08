@@ -73,4 +73,8 @@ export class SignInComponent {
     })
   }
 
+  signout(){
+    this.router.navigate(['/users']);
+  }
+
 }

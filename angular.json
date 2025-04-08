@@ -66,6 +66,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "prox.config.js"
+        },
           "configurations": {
             "production": {
               "buildTarget": "pitang-desafio:build:production"
