@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {User} from '../../models/user.model';
 import {CommonModule, DatePipe} from '@angular/common';
 import {AvatarModule} from 'primeng/avatar';
@@ -32,7 +32,7 @@ import { PanelModule } from 'primeng/panel';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit{
   user!: User;
 
   constructor(private meService: MeService,

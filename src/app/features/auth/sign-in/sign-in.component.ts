@@ -73,7 +73,7 @@ export class SignInComponent {
     })
   }
 
-  signout(){
+  register(){
     this.router.navigate(['/users']);
   }
 
