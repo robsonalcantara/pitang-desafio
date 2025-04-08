@@ -3,11 +3,11 @@ import {CarsComponent} from './features/cars/cars.component';
 import {UsersComponent} from './features/users/users.component';
 import {ProfileComponent} from './features/profile/profile.component';
 import {SignInComponent} from './features/auth/sign-in/sign-in.component';
+import { AuthModule } from './features/auth/auth.module';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: UsersComponent
+    path: '',pathMatch:'full',redirectTo:'signin'
   },
   {
     path: 'users',
@@ -23,6 +23,6 @@ export const routes: Routes = [
   },
   {
     path: 'signin',
-    component: SignInComponent
+    loadChildren: () => import('./features/auth/auth.module').then(m=>AuthModule)
   }
 ];

@@ -10,5 +10,5 @@ import { NavbarComponent } from './core/navbar/navbar.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'desafio-pitang-ng';
+  title = 'pitang-desafio';
 }
