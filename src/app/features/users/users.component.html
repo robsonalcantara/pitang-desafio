@@ -1,6 +1,20 @@
 <app-user-form [editUser]="editUser" (updateUserList)="getUsers()"></app-user-form>
 
-<div class="adjust-table-width">
+
+<div class="adjust-table-width" *ngIf="isLoggedIn">
+  
+  <div class="user-cards">
+    <div class="user-card" *ngFor="let user of users">
+      <h3>{{ user.firstName }}</h3>
+      <div class="car-card" *ngFor="let car of user.cars">
+        <div class="car-info">
+          <strong>{{ car.model }}</strong>
+          <span>{{ car.usageCount != null ? car.usageCount : '-' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <p-table [columns]="cols" [value]="users" [paginator]="true" [rowsPerPageOptions]="[5, 10, 20]" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header" let-columns>
       <tr>
@@ -40,5 +54,7 @@
       </tr>
     </ng-template>
   </p-table>
+
 </div>
+
 <p-toast></p-toast>

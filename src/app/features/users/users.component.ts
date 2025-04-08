@@ -18,7 +18,7 @@ import {ToastModule} from 'primeng/toast';
 export class UsersComponent {
   users!: User[];
   editUser!: User;
-
+  isLoggedIn = false;
 
   cols: Array<{ field: string; header: string }> = [
     { field: 'firstName', header: 'First Name' },
@@ -37,7 +37,10 @@ export class UsersComponent {
   }
 
   ngOnInit() {
-    this.getUsers()
+    this.isLoggedIn = !!sessionStorage.getItem('auth-token');
+    if (this.isLoggedIn) {
+      this.getUsers();
+    }
   }
 
   editUserById(user: User){
